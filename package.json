@@ -1,0 +1,30 @@
+{
+  "name": "gl_assessment_activity",
+  "version": "1.0.0",
+  "description": "Simple Assessment To Check For Simple Cypress Use Cases",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open --e2e --browser chrome",
+    "cy:run": "cypress run --spec cypress/e2e/features/*",
+    "cy:dashboard": "npx cypress run --record --key 3975895a-74da-442f-82de-08615487ab6c --e2e -b chrome screenshot || false",
+    "allure:clear": "rm -r allure-results allure-report || true",
+    "allure:report": "allure generate allure-results --clean -o allure-report && echo 'To open allure report use: allure open'",
+    "cy:allure": "npm run allure:clear && cypress run -b chrome --env allure=true && npm run allure:report && echo 'To open allure report use: allure open'"
+  },
+  "keywords": [
+    "cypress"
+  ],
+  "author": "green_lambda",
+  "license": "ISC",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^15.0.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.1.5",
+    "@faker-js/faker": "^8.0.2",
+    "@shelex/cypress-allure-plugin": "^2.34.0",
+    "cypress": "^12.0.2",
+    "esbuild": "^0.16.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
+}
